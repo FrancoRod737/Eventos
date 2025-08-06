@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valorar la Página</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <header>
+    <h1>Valorar la Página</h1>
+  </header>
+
+  <nav class="navbar">
+    <a href="/index.html">Inicio</a>
+    <a href="./nosotros.html">Sobre Nosotros</a>
+    <a href="./redes.html">Redes</a>
+  </nav>
+
+  <main>
+    <section class="valoracion">
+      <h2>Valorá nuestro servicio</h2>
+      <form
+        id="valoracionForm"
+        action="https://formspree.io/f/xovlpazq"
+        method="POST"
+      >
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="comentario">Comentario:</label>
+        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+        <label for="puntuacion">Puntaje:</label>
+        <div class="estrellas">
+          <input type="radio" id="estrella5" name="puntuacion" value="5" required />
+          <label for="estrella5">★</label>
+
+          <input type="radio" id="estrella4" name="puntuacion" value="4" />
+          <label for="estrella4">★</label>
+
+          <input type="radio" id="estrella3" name="puntuacion" value="3" />
+          <label for="estrella3">★</label>
+
+          <input type="radio" id="estrella2" name="puntuacion" value="2" />
+          <label for="estrella2">★</label>
+
+          <input type="radio" id="estrella1" name="puntuacion" value="1" />
+          <label for="estrella1">★</label>
+        </div>
+
+        <button type="submit">Enviar valoración</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/valoracion.js"></script>
+</body>
+</html>
