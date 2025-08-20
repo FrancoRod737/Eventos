@@ -2,59 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Valorar la Página</title>
+  <title>Valorar - Eventos 360</title>
   <link rel="stylesheet" href="../css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <h1>Valorar la Página</h1>
+    <h1>Valorar Nuestro Servicio</h1>
+    <button id="modoOscuroBtn">🌙 Modo Oscuro</button>
   </header>
 
   <nav class="navbar">
     <a href="../index.html">Inicio</a>
     <a href="./nosotros.html">Sobre Nosotros</a>
+    <a href="./valorar.html">Valorar</a>
     <a href="./redes.html">Redes</a>
   </nav>
 
   <main>
-    <section class="valoracion">
-      <h2>Valorá nuestro servicio</h2>
-      <form
-        id="valoracionForm"
-        action="https://formspree.io/f/xovlpazq"
-        method="POST"
-      >
+    <section>
+      <form id="valoracionForm" action="https://formspree.io/f/xovlpazq" method="POST">
         <label for="nombre">Tu nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
 
+        <label>Tu valoración:</label>
+        <div class="estrellas">
+          <input type="radio" name="estrella" id="estrella5" value="5" /><label for="estrella5"><i class="fas fa-star"></i></label>
+          <input type="radio" name="estrella" id="estrella4" value="4" /><label for="estrella4"><i class="fas fa-star"></i></label>
+          <input type="radio" name="estrella" id="estrella3" value="3" /><label for="estrella3"><i class="fas fa-star"></i></label>
+          <input type="radio" name="estrella" id="estrella2" value="2" /><label for="estrella2"><i class="fas fa-star"></i></label>
+          <input type="radio" name="estrella" id="estrella1" value="1" /><label for="estrella1"><i class="fas fa-star"></i></label>
+        </div>
+
         <label for="comentario">Comentario:</label>
         <textarea id="comentario" name="comentario" rows="4" required></textarea>
-
-        <label for="puntuacion">Puntaje:</label>
-        <div class="estrellas">
-          <input type="radio" id="estrella5" name="puntuacion" value="5" required />
-          <label for="estrella5">★</label>
-
-          <input type="radio" id="estrella4" name="puntuacion" value="4" />
-          <label for="estrella4">★</label>
-
-          <input type="radio" id="estrella3" name="puntuacion" value="3" />
-          <label for="estrella3">★</label>
-
-          <input type="radio" id="estrella2" name="puntuacion" value="2" />
-          <label for="estrella2">★</label>
-
-          <input type="radio" id="estrella1" name="puntuacion" value="1" />
-          <label for="estrella1">★</label>
-        </div>
 
         <button type="submit">Enviar valoración</button>
       </form>
     </section>
   </main>
 
-  <script src="../js/valoracion.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

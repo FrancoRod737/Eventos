@@ -1,70 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const tipoEventoSelect = document.getElementById("tipoEvento");
-  const extrasSelect = document.getElementById("extras");
-  const form = document.getElementById("reservaForm");
-  const resultado = document.getElementById("resultado");
+  const btnModoOscuro = document.getElementById("modoOscuroBtn");
+  const body = document.body;
 
-  const eventos = [
-    { id: "1", nombre: "Cumpleaños", precioPorPersona: 500 },
-    { id: "2", nombre: "Casamiento", precioPorPersona: 1000 },
-    { id: "3", nombre: "Conferencia", precioPorPersona: 800 },
-    { id: "4", nombre: "Fiesta de 15", precioPorPersona: 700 }
-  ];
+  // Restaurar preferencia guardada
+  if (localStorage.getItem("modoOscuro") === "true") {
+    body.classList.add("oscuro");
+  }
 
-  const servicios = [
-    { id: "1", nombre: "Catering", precioBase: 3000 },
-    { id: "2", nombre: "DJ", precioBase: 2000 },
-    { id: "3", nombre: "Fotografía", precioBase: 1500 },
-    { id: "4", nombre: "Decoración", precioBase: 1000 }
-  ];
-
-  function cargarOpciones(select, data) {
-    select.innerHTML = `<option value="">Selecciona una opción</option>`;
-    data.forEach(item => {
-      const option = document.createElement("option");
-      option.value = item.id;
-      option.textContent = item.nombre;
-      select.appendChild(option);
+  if (btnModoOscuro) {
+    btnModoOscuro.addEventListener("click", () => {
+      body.classList.toggle("oscuro");
+      localStorage.setItem("modoOscuro", body.classList.contains("oscuro"));
     });
   }
 
-  cargarOpciones(tipoEventoSelect, eventos);
-  cargarOpciones(extrasSelect, servicios);
+  // Cargar datos dinámicos en index
+  const tipoEventoSelect = document.getElementById("tipoEvento");
+  const extrasSelect = document.getElementById("extras");
 
-  form.addEventListener("submit", (e) => {
-    
-    const tipoId = tipoEventoSelect.value;
-    const cantidadPersonas = parseInt(document.getElementById("cantidad").value);
-    const extrasId = extrasSelect.value;
+  if (tipoEventoSelect && extrasSelect) {
+    const eventosData = [
+      { id: 1, nombre: "Cumpleaños" },
+      { id: 2, nombre: "Casamiento" },
+      { id: 3, nombre: "Conferencia" },
+      { id: 4, nombre: "Fiesta de 15" }
+    ];
 
-    if (!tipoId || !cantidadPersonas) {
-      e.preventDefault(); 
-      Swal.fire("Por favor, completá el tipo de evento y la cantidad de personas.", "", "warning");
-      return;
+    const extrasData = [
+      { id: 1, nombre: "Catering" },
+      { id: 2, nombre: "DJ" },
+      { id: 3, nombre: "Fotografía" },
+      { id: 4, nombre: "Decoración" }
+    ];
+
+    function cargarOpciones(select, data) {
+      select.innerHTML = `<option value="">Selecciona una opción</option>`;
+      data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.nombre;
+        option.textContent = item.nombre;
+        select.appendChild(option);
+      });
     }
 
-    const eventoSeleccionado = eventos.find(ev => ev.id === tipoId);
-    const servicioSeleccionado = servicios.find(s => s.id === extrasId);
-
-    if (!eventoSeleccionado) {
-      e.preventDefault();
-      Swal.fire("Evento no válido.", "", "error");
-      return;
-    }
-
-    const costoBase = eventoSeleccionado.precioPorPersona * cantidadPersonas;
-    const costoExtras = servicioSeleccionado ? servicioSeleccionado.precioBase : 0;
-    const total = costoBase + costoExtras;
-
-    resultado.innerHTML = `
-      <h3>Resumen de tu cotización</h3>
-      <p><strong>Tipo de evento:</strong> ${eventoSeleccionado.nombre}</p>
-      <p><strong>Cantidad de personas:</strong> ${cantidadPersonas}</p>
-      <p><strong>Extras:</strong> ${servicioSeleccionado ? servicioSeleccionado.nombre : "Ninguno"}</p>
-      <p><strong>Total estimado:</strong> $${total}</p>
-    `;
-    resultado.classList.remove("oculto");
-
-
-  });
+    cargarOpciones(tipoEventoSelect, eventosData);
+    cargarOpciones(extrasSelect, extrasData);
+  }
 });

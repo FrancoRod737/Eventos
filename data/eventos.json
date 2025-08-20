@@ -1,0 +1,14 @@
+{
+  "eventos": [
+    { "id": 1, "nombre": "Cumpleaños", "precioPorPersona": 500 },
+    { "id": 2, "nombre": "Casamiento", "precioPorPersona": 1200 },
+    { "id": 3, "nombre": "Conferencia", "precioPorPersona": 800 },
+    { "id": 4, "nombre": "Fiesta de 15", "precioPorPersona": 1000 }
+  ],
+  "extras": [
+    { "id": 1, "nombre": "Catering", "precioBase": 2000 },
+    { "id": 2, "nombre": "DJ", "precioBase": 1500 },
+    { "id": 3, "nombre": "Fotografía", "precioBase": 1000 },
+    { "id": 4, "nombre": "Decoración", "precioBase": 2500 }
+  ]
+}
